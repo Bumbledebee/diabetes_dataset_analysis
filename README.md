@@ -87,5 +87,6 @@ I now have in place a framework that enables me to quickly analyse any dataset t
 What I would add as standard analysis would be an automatic creation of simple frequency&proportion tables for the categorical values as well as distribution histograms and box plotting for all numerical values.
 
 # Open question I have at this time:
-- What to do if your target is binary for the numerical values? Ideally one would want the diabetes otucome as target value for the numerial dataframe. In my example then one would need to exclude either glucose or hb_a1c due to multicollinearity.
+- What to do if your target is binary for the numerical continous values? Ideally one would want the diabetes otucome as target value for the numerial dataframe. In my example then one would need to exclude either glucose or hb_a1c due to multicollinearity.
+- What to do with numerical discrete data that is not a category? (e.g. age or number or cars etc.)
 - What if time component gets added to it? How would it be included/excluded in the num and cat correlations? What if the same patients got included multiple times with different values over time.
