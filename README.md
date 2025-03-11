@@ -72,3 +72,8 @@ I now have in place a framework that enables me to quickly analyse any dataset t
 
 # Next steps
 Next steps would be to create functions to quickly clean and analyse any new dataset. Moreover, I would include an automatic creation of simple frequency&proportion tables for the categorical values as well as distribution histograms and box plotting for all numerical values.
+
+# Open question I have at this time:
+- What to do if your target is binary for the numerical values? Ideally one would want the diabetes otucome as target value for the numerial dataframe. In my example then one would need to exclude either glucose or hb_a1c due to Multicollinearity.
+- What if time component gets add to it? How would it be included/excluded in the num and cat correlations?
+- How to deal with if over time we had repeated patients test results.
