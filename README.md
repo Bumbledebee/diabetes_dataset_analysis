@@ -48,32 +48,44 @@ Challenges encountered on the way:
 
 ## Data Analysis 
 
-Open this [link](https://docs.google.com/presentation/d/1S4drNo-kODkTmviWicpnEOEJBWnuWp6doipnTxOjpRc/edit#slide=id.g33ce38fb956_0_36) to follow along or check out the "Diabetes Dataset Analysis Presentation" pdf attached to this repository as well. The code can be found in analysis Jupyter Notebook and a copy of the plots is in the plots/ folder
+Open this [link](https://docs.google.com/presentation/d/1S4drNo-kODkTmviWicpnEOEJBWnuWp6doipnTxOjpRc/edit#slide=id.g33ce38fb956_0_36) to follow along or check out the "Diabetes Dataset Analysis Presentation" pdf attached to this repository as well. The code can be found in analysis Jupyter Notebook and a copy of the plots is in the plots/ folder.
 
 ### Categorical Value Analysis
 1. Manual creation of a cross table for the Chi-Square P Value test for each categorical value with every other categorical value. The P value checks for statistical significance of the two values for not being independant.
 Values being independant would be the null hypothesis that can be rejected with the p value being lower than the alpha which is often set at 0.05. The visualisation is done with the heatmap and we only need to focus on the last row.
+
+The data shows that 'family_history', 'hypertension', 'medication_use' would indeed be significant in the relationship to the outcome in the first step. Definitely it becomes clear that diet_type is not relevant at all for the outcome.
+
 2. Manual creation of a cross table for the Cramér's V test for each categorical value with every other categorical value. Cramer's V is a measure of association used to quantify the strength of the relationship between categorical variables.
-Interpretation: Cramer's V ranges from 0 to 1, where 0 indicates no association, and 1 represents a perfect association between the variables. A higher value of Cramer's V indicates a stronger relationship between the categorical variables.
-The visualisation is done with the heatmap and we only need to focus on the last row.
+Interpretation: Cramer's V ranges from 0 to 1, where 0 indicates no association, and 1 represents a perfect association between the variables. A higher value of Cramer's V indicates a stronger relationship between the categorical variables. The visualisation is done with the heatmap and we only need to focus on the last row.
+
+The data shows that from those variables that had a significance only family_history has a strong correlation to the outcome.
+
 3. Frequency table for the values with the strongest association and statistical significance.
 
+The frequency table makes clear how the result came about as the group without diabetes had zero family_history of diabetes.
+
 ### Numerical Value Analysis
-1. Automatic creation of a correlation heatmap with Spearman. The Spearman correlation coefficient indicates how monotonic (when one value grows the other one for sure does not decrease and the other way round) the relationship between the values is.
-Again we only focus on the last row, which shows how our target goes against the other values.
+1. Automatic creation of a correlation heatmap with Spearman. The Spearman correlation coefficient indicates how monotonic (when one value grows the other one for sure does not decrease and the other way round) the relationship between the values is. Again we only focus on the last row, which shows how our target goes against the other values.
+
+The only monotonic relationship that sticks out is that of glucose and hb_a1c.
+
 2. Automatic creation of a correlation heatmap with Pearson. The Pearson correlation coefficient indicates how linear (when one value grows the other one grows as well and the other way round) the relationship between the values is.
 Again we only focus on the last row, which shows how our target goes against the other values.
+
+The only linear relationship that sticks out is that of glucose and hb_a1c.
+
 3. Plotting of the linear/monotonic relationships found in the previous steps
 4. Plotting of the Side-by-Side Box Plot of the interesting values for each of the (categorical) target value.
 
 ## Conclusions
-The conclusion that family history matters for having diabetes or not I could have guessed since there is a diabetis type which is genetically inherited. It is a flaw in the dataset that they do not have a column for diabetes type. Furthermore, that the relationship between glucose and hb_a1c is linear one could have guessed as both are a form of sugar in the blood, one more momentary and the other one more longterm. As the median blood sugar for the Diabets and No Diabetes group is pretty close I wonder if there could have been even more insights with including stages of pre-diabetes.
+The conclusion that family history matters for having diabetes or not I could have guessed since there is a diabetis type which is genetically inherited. It is a flaw in the dataset that they do not have a column for diabetes type. For the non genetic diabetes type definitely diet is a known important factor, but the way the data has been collected does not allow to show any relationship here.
+Furthermore, that the relationship between glucose and hb_a1c is linear one could have guessed as both are a form of sugar in the blood, one more momentary and the other one more longterm. As the median blood sugar for the Diabets and No Diabetes group is pretty close I wonder if there could have been even more insights with including stages of pre-diabetes.
 I now have in place a framework that enables me to quickly analyse any dataset thus judging if i worth continuing the analysis of the dataset or not. 
 
 # Next steps
-Next steps would be to create functions to quickly clean and analyse any new dataset. Moreover, I would include an automatic creation of simple frequency&proportion tables for the categorical values as well as distribution histograms and box plotting for all numerical values.
+What I would add as standard analysis would be an automatic creation of simple frequency&proportion tables for the categorical values as well as distribution histograms and box plotting for all numerical values.
 
 # Open question I have at this time:
-- What to do if your target is binary for the numerical values? Ideally one would want the diabetes otucome as target value for the numerial dataframe. In my example then one would need to exclude either glucose or hb_a1c due to Multicollinearity.
-- What if time component gets add to it? How would it be included/excluded in the num and cat correlations?
-- How to deal with if over time we had repeated patients test results.
+- What to do if your target is binary for the numerical values? Ideally one would want the diabetes otucome as target value for the numerial dataframe. In my example then one would need to exclude either glucose or hb_a1c due to multicollinearity.
+- What if time component gets added to it? How would it be included/excluded in the num and cat correlations? What if the same patients got included multiple times with different values over time.
